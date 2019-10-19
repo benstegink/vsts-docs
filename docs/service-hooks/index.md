@@ -32,7 +32,6 @@ Service hooks enable you to perform tasks on other services when events happen i
 * [Integrate with Bamboo](services/bamboo.md)
 * [Integrate with Campfire](services/campfire.md)
 * [Integrate with Flowdock](services/flowdock.md)
-* [Integrate with HipChat](services/hipchat.md)
 * [Integrate with Hubot](services/hubot.md)
 * [Integrate with MyGet](services/myget.md)
 * [Integrate with Microsoft Teams](services/teams.md)

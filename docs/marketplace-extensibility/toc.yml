@@ -6,7 +6,7 @@
   href: ../extend/toc.yml 
 - name: Integrate applications
   href: ../integrate/toc.yml 
-- name: Service Hooks
+- name: Service hooks
   href: ../service-hooks/toc.yml
 - name: Additional integrations
   items:
@@ -35,8 +35,12 @@
   - name: How to buy Azure DevOps CALs
     href: https://visualstudio.microsoft.com/team-services/tfs-pricing/
   - name: Billing 
-    href: /azure/devops/organizations/billing/index
+    href: ../organizations/billing/overview.md
   - name: Manage & Configure Resources
-    href: /azure/devops/organizations/index
+    href: ../organizations/index.yml
   - name: Build Visual Studio extensions
     href: /visualstudio/extensibility/shipping-visual-studio-extensions
+  - name: Build apps for Windows
+    href: /windows/apps/
+  - name: Mobile application development in Microsoft
+    href: /azure/mobile-apps/

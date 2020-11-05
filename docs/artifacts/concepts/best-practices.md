@@ -1,12 +1,8 @@
----
-title: Best practices for using packages in Azure DevOps Services and TFS
+﻿---
+title: Using packages in Azure DevOps best practices
 description: Learn best practices for producing and consuming feeds and packages in Visual Studio Team Services and Team Foundation Server
-ms.prod: devops
 ms.technology: devops-artifacts
 ms.topic: conceptual
-ms.manager: mijacobs
-ms.author: phwilson
-author: chasewilson
 ms.date: 05/18/2018
 monikerRange: '>= tfs-2017'
 ---
@@ -37,7 +33,7 @@ When the package is deemed of sufficient quality to be released, promote that pa
 
 Promoting package versions to a view ensures they won't be deleted by retention policies. For more information on views, check out the [views concept page](views.md).
 
-### If external teams are consuming your package, ensure that your `@release` view and `@prerelease` view are visible across the organization and/or organization
+### If external teams are consuming your package, ensure that your `@release` view and `@prerelease` view are visible across the organizations
 
 If these views aren't visible, teams won't have access to your packages.
 

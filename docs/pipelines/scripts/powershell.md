@@ -1,24 +1,19 @@
----
-title: Use a PowerShell script to customize your build pipeline
+﻿---
+title: Use PowerShell scripts to customize pipelines
 ms.custom: seodec18
 description: Learn how you can use a script to customize the build pipeline in your workflow by using Azure Pipelines or Team Foundation Server (TFS).
 ms.topic: conceptual
-ms.prod: devops
-ms.technology: devops-cicd
 ms.assetid: 7D184F55-18BC-40E5-8BE7-283A0DB8E823
-ms.manager: mijacobs
-ms.author: phwilson
-author: chasewilson
 ms.date: 07/03/2019
 monikerRange: '>= tfs-2015'
 ---
 
 # Use a PowerShell script to customize your build pipeline
 
-**Azure Pipelines | TFS 2018 | TFS 2017 | TFS 2015 | [Previous versions (XAML builds)](https://msdn.microsoft.com/library/dn376353%28v=vs.120%29.aspx)**
+**Azure Pipelines | TFS 2018 | TFS 2017 | TFS 2015 | [Previous versions (XAML builds)](/previous-versions/visualstudio/visual-studio-2013/dn376353(v=vs.120))**
 
 ::: moniker range="<= tfs-2018"
-[!INCLUDE [temp](../_shared/concept-rename-note.md)]
+[!INCLUDE [temp](../includes/concept-rename-note.md)]
 ::: moniker-end
 
 When you are ready to move beyond the basics of compiling and testing your code, use a PowerShell script to add your team's business logic to your build pipeline.
@@ -52,9 +47,9 @@ You can run Windows PowerShell Script on a [Windows build agent](../agents/v2-wi
 
 2. Add a PowerShell build task.
 
-   ![Add task](_img/BldStepAddBegin.png)
+   ![Add task](media/BldStepAddBegin.png)
 
-   ![Add PowerShell task](_img/BldScriptPSAdd.png)
+   ![Add PowerShell task](media/BldScriptPSAdd.png)
 
 3. Drag the build task where you want it to run.
 
@@ -159,11 +154,11 @@ else
 
 Add the build task to your build pipeline.
 
-![Apply version to assemblies build task](_img/BldScriptPSExmpVerAssembliesBuildStep.png)
+![Apply version to assemblies build task](media/BldScriptPSExmpVerAssembliesBuildStep.png)
 
 Specify your build number with something like this:
 
-![Build number format](_img/BldScriptPSExmpVerAssembliesBuildNumFormat.png)
+![Build number format](media/BldScriptPSExmpVerAssembliesBuildNumFormat.png)
 
 ```
 $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
@@ -172,7 +167,27 @@ $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 <a name="oauth"></a>
 ## Use the OAuth token to access the REST API
 
-To enable your script to use the build pipeline OAuth token, go to the **Options** tab of the build pipeline and select **Allow Scripts to Access OAuth Token**.
+#### [YAML](#tab/yaml)
+
+You can use `$env:SYSTEM_ACCESSTOKEN` in your script in a YAML pipeline to access the OAuth token. 
+
+```yaml
+- task: PowerShell@2
+  inputs:
+   targetType: inline
+   script: |
+      $url = "$($env:SYSTEM_TEAMFOUNDATIONCOLLECTIONURI)$env:SYSTEM_TEAMPROJECTID/_apis/build/definitions/$($env:SYSTEM_DEFINITIONID)?api-version=5.0"
+      Write-Host "URL: $url"
+      $pipeline = Invoke-RestMethod -Uri $url -Headers @{
+          Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
+      }
+      Write-Host "Pipeline = $($pipeline | ConvertTo-Json -Depth 100)"
+```
+
+
+#### [Classic](#tab/classic)
+
+To enable your script to use the build process OAuth token, go to the **Tasks** tab of the build definition and within your build phase, select **Allow Scripts to Access OAuth Token** which is located in the **Additional options** section.
 
 After you've done that, your script can use to SYSTEM_ACCESSTOKEN environment variable to access the [Azure Pipelines REST API](../../integrate/index.md). For example:
 
@@ -186,7 +201,10 @@ Write-Host "Pipeline = $($pipeline | ConvertTo-Json -Depth 100)"
 ```
 
 
-## Q&A
+--- 
+
+
+## FAQ
 <!-- BEGINSECTION class="md-qanda" -->
 
 
@@ -194,7 +212,7 @@ Write-Host "Pipeline = $($pipeline | ConvertTo-Json -Depth 100)"
 
 [Use variables](../build/variables.md)
 
-[!INCLUDE [include](../_shared/variable-set-in-script-qa.md)]
+[!INCLUDE [include](../includes/variable-set-in-script-qa.md)]
 
 ### Which branch of the script does the build run?
 
@@ -205,7 +223,7 @@ The build runs the script same branch of the code you are building.
 You can use named parameters. Other kinds of parameters, such as switch parameters, are not yet supported and will cause errors.
 
 ::: moniker range="< azure-devops"
-[!INCLUDE [temp](../_shared/qa-versions.md)]
+[!INCLUDE [temp](../includes/qa-versions.md)]
 ::: moniker-end
 
 <!-- ENDSECTION -->

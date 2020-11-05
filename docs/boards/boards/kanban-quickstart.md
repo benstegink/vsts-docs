@@ -5,27 +5,24 @@ description: Use the Kanban board to plan and track work in Azure Boards and Tea
 ms.custom: boards-kanban 
 ms.topic: quickstart
 ms.technology: devops-agile
-ms.prod: devops
-ms.topic: quickstart
-ms.manager: mijacobs
 ms.author: kaelli
 author: KathrynEE
 monikerRange: '>= tfs-2013'
-ms.date: 07/22/2019
+ms.date: 09/10/2020
 ---
 
 # Start using your Kanban board
 
-[!INCLUDE [temp](../_shared/version-vsts-tfs-all-versions.md)]
+[!INCLUDE [temp](../includes/version-all.md)]
 
 Your Kanban board turns your backlog into an interactive signboard, which provides a visual flow of work. As work progresses from idea to completion, you update the items on the board. Each column represents a work stage. Each card represents a backlog item, user story, or bug at that stage of work. 
 
 > [!div class="mx-imgBorder"]  
-> ![Kanban board](_img/quickstart/intro-view.png) 
+> ![Kanban board](media/quickstart/intro-view.png) 
 
 User stories and bugs correspond to types of work items. You use [work items](../backlogs/add-work-items.md) to share information, assign work to team members, update status, track dependencies, and more.
 
-[!INCLUDE [temp](../_shared/prerequisites-kanban.md)]
+[!INCLUDE [temp](../includes/prerequisites-kanban.md)]
 
 ## Add a Kanban board
 
@@ -33,19 +30,19 @@ Each Kanban board is associated with a team and a work item type. For the Agile 
 
 When you add a team, you add a number of team assets. A team admin can configure the assets to support the way the team works. To add a set of Kanban boards to support a new team, [add a team](../../organizations/settings/add-teams.md). 
 
-::: moniker range="azure-devops" 
+::: moniker range=">= azure-devops-2019" 
 
 To add a board to support an additional portfolio backlog, see [Customize your backlogs or boards](../../organizations/settings/work/customize-process-backlogs-boards.md).
 
 ::: moniker-end 
 
-::: moniker range="<= azure-devops-2019"
+::: moniker range="< azure-devops-2019"
 
 To add a board to support an additional portfolio backlog level, see [Add a portfolio backlog level](../../reference/add-portfolio-backlogs.md).
 
 ::: moniker-end   
 
-[!INCLUDE [temp](../_shared/open-kanban-board.md)] 
+[!INCLUDE [temp](../includes/open-kanban-board.md)] 
 
 
 <a id="add-work-items"> </a>
@@ -54,21 +51,21 @@ To add a board to support an additional portfolio backlog level, see [Add a port
 
 ::: moniker range=">= azure-devops-2019"
 
-To add a work item, select the ![ ](../_img/icons/add_icon.png) plus sign, enter a title, and then press Enter. 
+To add a work item, select the :::image type="icon" source="../media/icons/add_icon.png" border="false"::: plus sign, enter a title, and then press Enter. 
 
 ::: moniker-end
 
-::: moniker range="azure-devops"
+::: moniker range=">= azure-devops-2020"
 
 > [!div class="mx-imgBorder"]  
-> ![Add a new item on Kanban board, new nav](_img/quickstart/add-new-item-agile-s155.png) 
+> ![Add a new item on Kanban board, new nav](media/quickstart/add-new-item-agile-s155.png) 
 
 ::: moniker-end
 
 ::: moniker range="azure-devops-2019"
 
 > [!div class="mx-imgBorder"]  
-> ![Add a new item on Kanban board, new nav](_img/quickstart/add-new-item-agile.png) 
+> ![Add a new item on Kanban board, new nav](media/quickstart/add-new-item-agile.png) 
 
 ::: moniker-end
 
@@ -80,10 +77,10 @@ The system automatically saves the work item with the title you entered. You can
 
 ::: moniker range="<= tfs-2018"
 
-To add a work item, select the ![ ](../_img/icons/add_icon.png) plus sign, enter a title, and then press Enter. 
+To add a work item, select the :::image type="icon" source="../media/icons/add_icon.png" border="false"::: plus sign, enter a title, and then press Enter. 
 
 > [!div class="mx-imgBorder"]  
-> ![Add a new item on Kanban board, prev nav](_img/quickstart/add-new-item-standard.png)
+> ![Add a new item on Kanban board, prev nav](media/quickstart/add-new-item-standard.png)
 
 The system automatically saves the work item with the title you entered. You can add as many work items you want by using this method. 
 
@@ -93,15 +90,25 @@ The system automatically saves the work item with the title you entered. You can
 
 To add details to any work item, select the title. Or, you can directly modify any field that displays. For example, you can reassign a work item by selecting **Assigned To**. For a description of each field, see [Create your backlog, Add details and estimates](../backlogs/create-your-backlog.md#estimates). 
 
+[!INCLUDE [temp](../includes/note-user-assigned.md)]
+
 To customize the set of fields displayed on the card, see [Customize cards](../../boards/boards/customize-cards.md).
 
 <a id="update-status">  </a>
 
-## Update status by dragging
+## Update status 
 
 As work completes in one stage, update the status of an item by dragging it to a downstream stage. 
 
-![Kanban board, Agile template, update status of work item](_img/ALM_CC_MoveCard.png)  
+::: moniker range="<= azure-devops-2020"
+
+> [!NOTE]   
+> Users assigned Stakeholder access aren't about to use the drag-and-drop feature to update status. 
+
+::: moniker-end
+
+![Kanban board, Agile template, update status of work item](media/ALM_CC_MoveCard.png)  
+
 
 ::: moniker range=">= tfs-2015"
 
@@ -109,12 +116,9 @@ As work completes in one stage, update the status of an item by dragging it to a
 
 You can quickly update a field or reassign ownership directly from the board. If the field you want to update isn't showing, then [customize the card to show it](../../boards/boards/customize-cards.md). 
 
-![Kanban, assign items](_img/ALM_CC_UpdateFieldOnCard.png)
-
+![Kanban, assign items](media/ALM_CC_UpdateFieldOnCard.png)
 
 ::: moniker-end
-
-
 
 ## Invite others to work on your Kanban board 
 
@@ -123,20 +127,20 @@ All members of a project can view and contribute to your Kanban board. To invite
 ::: moniker range="azure-devops"
 
 > [!div class="mx-imgBorder"]  
-> ![Browser URL for the Kanban board](_img/quickstart/kanban-board-url-s155.png)
+> ![Browser URL for the Kanban board](media/quickstart/kanban-board-url-s155.png)
 
 ::: moniker-end
 
 ::: moniker range="azure-devops-2019"
 
 > [!div class="mx-imgBorder"]  
-> ![Browser URL for the Kanban board](_img/quickstart/kanban-board-url.png)
+> ![Browser URL for the Kanban board](media/quickstart/kanban-board-url.png)
 
 ::: moniker-end
 
 ::: moniker range="<= tfs-2018"
 
-![Browser URL for the Kanban board](_img/kanban-basics-url.png)
+![Browser URL for the Kanban board](media/kanban-basics-url.png)
 
 ::: moniker-end
 

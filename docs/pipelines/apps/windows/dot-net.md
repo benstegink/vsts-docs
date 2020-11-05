@@ -2,23 +2,25 @@
 title: Build your .NET desktop app for Windows
 ms.custom: seodec18
 description: Learn how you can define a continuous integration (CI) pipeline that builds your .NET app on Team Foundation Server and Azure Pipelines.
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: quickstart
 ms.assetid: 2BFC43A2-4F6C-4A5C-86EE-6DDA8733829D
-ms.manager: mijacobs
-ms.author: phwilson
-author: chasewilson
 ms.date: 12/20/2017
 monikerRange: '>= tfs-2017'
 ---
 
 # Build your .NET desktop app for Windows
 
-**Azure Pipelines | Azure DevOps Server 2019 | TFS 2018 | TFS 2017.2**
+[!INCLUDE [version-tfs-2017-rtm](../../includes/version-tfs-2017-rtm.md)]
+
+:::moniker range="tfs-2017"
+
+> [!NOTE]
+> This article applies to TFS 2017.2 and higher.
+
+:::moniker-end
 
 ::: moniker range="<= tfs-2018"
-[!INCLUDE [temp](../../_shared/concept-rename-note.md)]
+[!INCLUDE [temp](../../includes/concept-rename-note.md)]
 ::: moniker-end
 
 Azure Pipelines and Team Foundation Server (TFS) provide a highly customizable continuous integration (CI) pipeline to automatically build your .NET desktop app whenever your team pushes or checks in code. In this quickstart you learn how to define your CI pipeline.
@@ -31,7 +33,7 @@ Azure Pipelines and Team Foundation Server (TFS) provide a highly customizable c
 
 ## Get sample app code
 
-[!INCLUDE [include](../_shared/get-sample-code-intro.md)]
+[!INCLUDE [include](../includes/get-sample-code-intro.md)]
 
 ```
 https://github.com/adventworks/net-sample
@@ -41,13 +43,13 @@ https://github.com/adventworks/net-sample
 
 ::: moniker range=">= azure-devops-2019"
 
-[!INCLUDE [include](../_shared/get-sample-code-azure-devops.md)]
+[!INCLUDE [include](../includes/get-sample-code-azure-devops.md)]
 
 ::: moniker-end
 
 ::: moniker range="< azure-devops-2019"
 
-[!INCLUDE [include](../_shared/get-sample-code-vsts-tfs-2017-update-2.md)]
+[!INCLUDE [include](../includes/get-sample-code-vsts-tfs-2017-update-2.md)]
 
 ::: moniker-end
 
@@ -55,7 +57,7 @@ https://github.com/adventworks/net-sample
 
 ::: moniker range=">= azure-devops-2019"
 
-[!INCLUDE [include](../_shared/get-sample-code-github.md)]
+[!INCLUDE [include](../includes/get-sample-code-github.md)]
 
 ::: moniker-end
 
@@ -70,7 +72,7 @@ This quickstart works for apps targeting the .NET Framework 4 or newer. The samp
 
 ## Set up continuous integration
 
-[!INCLUDE [include](../../_shared/ci-quickstart-intro.md)]
+[!INCLUDE [include](../../includes/ci-quickstart-intro.md)]
 
 [//]: # (TODO: Restore use of includes when we get support for using them in a list.)
 
@@ -82,7 +84,7 @@ This quickstart works for apps targeting the .NET Framework 4 or newer. The samp
     
    Navigate to the **Files** tab of the **Repos** hub, and then click **Set up build**.
 
-   ![Screenshot showing button to set up build for a repository](../_shared/_img/set-up-first-build-from-repos-hub.png)
+   ![Screenshot showing button to set up build for a repository](../media/set-up-first-build-from-repos-hub.png)
 
    You are taken to **Azure Pipelines** and asked to **Select a template** for the new build pipeline.
     
@@ -92,7 +94,7 @@ This quickstart works for apps targeting the .NET Framework 4 or newer. The samp
 
    Navigate to the **Files** tab of the **Code** hub, and then click **Set up build**.
 
-   ![Screenshot showing button to set up build for a repository](../_shared/_img/set-up-first-build-from-code-hub.png)
+   ![Screenshot showing button to set up build for a repository](../media/set-up-first-build-from-code-hub.png)
 
    You are taken to **Azure Pipelines** and asked to **Select a template** for the new build pipeline.
 
@@ -104,7 +106,7 @@ This quickstart works for apps targeting the .NET Framework 4 or newer. The samp
 
    * * *
 
-2. In the right panel, select **.NET Desktop**, and then click **Apply**.
+2. In the right panel, select **.NET Desktop**.
 
    You now see all the tasks that were automatically added to the build pipeline by the template. These are the tasks that will automatically run every time you push code changes.
 
@@ -137,8 +139,8 @@ This quickstart works for apps targeting the .NET Framework 4 or newer. The samp
 
 ## View the build summary
 
-[!INCLUDE [include](../_shared/view-build-summary.md)]
+[!INCLUDE [include](../includes/view-build-summary.md)]
 
 ## Next steps
 
-[!INCLUDE [include](../_shared/ci-web-app-next-steps.md)]
+[!INCLUDE [include](../includes/ci-web-app-next-steps.md)]

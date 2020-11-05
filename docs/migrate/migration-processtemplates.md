@@ -1,20 +1,18 @@
 ---
 title: Validation of process templates for migration import from https://marketplace.visualstudio.com/items?itemName=ms.feed# to Azure DevOps Services | Azure DevOps
 description: Guidance for fixing common data migration tool process template issues.
-ms.prod: devops
 ms.topic: conceptual
 ms.technology: devops-migrate
 ms.contentid: ee8c290d-0b48-4cbd-b7fd-7afb9591c169
-ms.manager: mijacobs
 ms.author: kaelli
 author: KathrynEE
 monikerRange: '>= tfs-2013'
 ms.date: 04/13/2018
 ---
 
-# Process templates
+# Process template validation
 
-[!INCLUDE [version-azure-devops](_shared/version-azure-devops.md)]
+[!INCLUDE [version-azure-devops](includes/version-azure-devops.md)]
 
 > [!NOTE]
 > It's recommended that you use the [Migration Guide](https://aka.ms/AzureDevOpsImport) to progress through your import. The guide links to the technical documentation as needed.
@@ -39,7 +37,7 @@ We recommend that for any project that has not been customized, that you review 
 
 ## Update to a system process
 
-If you started with an older version of Azure DevOps Server\TFS, odds are your projects are still using an older process template. If those projects have not been updated using the [Configure Features Wizard](../reference/configure-features-after-upgrade.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json) then the data migration tool will find process errors. In some rare cases, if your process is so old, even the Configure Features Wizard will not resolve the errors.
+If you started with an older version of Azure DevOps Server\TFS, odds are your projects are still using an older process template. If those projects have not been updated using the [Configure Features Wizard](/previous-versions/azure/devops/reference/upgrade/configure-features-after-upgrade?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json) then the data migration tool will find process errors. In some rare cases, if your process is so old, even the Configure Features Wizard will not resolve the errors.
 
 Here are some examples of error messages you will probably receive:
 
@@ -68,7 +66,7 @@ First, make sure you know what process your project started as. Is it Scrum, Agi
 Use the "ConformProject.ps1" script to conform a project of your choosing to the Agile system process. This will update the entire project to be Agile.
 
 ```
-.\ConformProjects.ps1 "<collection url>" "<project name>" "c:\process-customization-scripts\import\agile" 
+.\ConformProject.ps1 "<collection url>" "<project name>" "c:\process-customization-scripts\import\agile" 
 ```
 
 Make sure you do this for each and every project. 
@@ -84,7 +82,7 @@ Are your process templates customized? Are you using an older outdated process t
 
 There are variety of customizations that will not work in Azure DevOps Services. Make sure you review the [list of customizations](../organizations/settings/work/import-process/differences.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json) that are supported. 
 
-If you have projects that are using an older process template, the data migration tool will find several errors. This is because your process templates have not been updated to match the most recent process templates. To start, try running the [Configure Features Wizard](../reference/configure-features-after-upgrade.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json) for each project. This will attempt to update your process templates with the most recent features. Doing so should drastically reduce the error count. 
+If you have projects that are using an older process template, the data migration tool will find several errors. This is because your process templates have not been updated to match the most recent process templates. To start, try running the [Configure Features Wizard](/previous-versions/azure/devops/reference/upgrade/configure-features-after-upgrade?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json) for each project. This will attempt to update your process templates with the most recent features. Doing so should drastically reduce the error count. 
 
 Finally, make sure you have [witadmin](../reference/witadmin/witadmin-customize-and-manage-objects-for-tracking-work.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json) on the machine that you intend to use to fix the process errors. This can be your local desktop. Witadmin is used in the automated scripts and is required whenever making changes to the process templates.
 
@@ -92,7 +90,7 @@ Finally, make sure you have [witadmin](../reference/witadmin/witadmin-customize-
 
 DataMigrationTool.log file will be generated and contains the list of errors that the validation process found. To view the logs, open DataMigrationTool.log file. Search for the string "Validation - Starting validation of project 1". Each project is validated so you will need to scan through all the projects. Examine any lines that have a prefix of "[Error ...".
 
-![Process logging file generated by the data migration tool](_img/migration-troubleshooting/witLogFile.png)
+![Process logging file generated by the data migration tool](media/migration-troubleshooting/witLogFile.png)
 
 We have documented the majority of the [validation errors](../organizations/settings/work/import-process/resolve-errors.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json). For each validation error we have provided the error number, description, and the method to resolve. 
 
@@ -112,7 +110,7 @@ This command will extract the xml from the project and place it into the same fo
 
 Now you need to fix the xml. Use the logs from the ```DataMigrationTool.log``` file to determine the errors for each project.
 
-![Process logging file generated by the data migration tool](_img/migration-troubleshooting/witLogFile.png)
+![Process logging file generated by the data migration tool](media/migration-troubleshooting/witLogFile.png)
 
 Some errors will require you to do use a [witadmin changefield](../reference/witadmin/manage-work-item-fields.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json) command. Changing a field name is the most common example. To save yourself some time, we recommend you run the ```witadmin changefield ...``` command and then re-run the data migration tool tool. Doing this will re-export the xml with the corrected names. Otherwise you will need manually fix the fields in the xml as well.
 
@@ -123,7 +121,7 @@ You can get the scripts at https://github.com/Microsoft/process-customization-sc
 ```cmdline
 .\conformproject.ps1 "<collection url>" "<project name>" "<process template folder>"
 ```
-![Conform project processes script running](_img/migration-troubleshooting/conformProjectProcessesPowerShell.png)
+![Conform project processes script running](media/migration-troubleshooting/conformProjectProcessesPowerShell.png)
 
 When the script has completed you need to re-run the data migration tool to validate the collection. Follow steps 1 - 3 until the data migration tool generates no more validation errors.
 
@@ -145,14 +143,14 @@ For more information on the changefield command see https://msdn.microsoft.com/l
 
 #### TF402556: For field System.IterationId to be well defined, you must name it Iteration ID and set its type to Integer.
 
-This error is typical for old process templates that have not been updated in some time. Try running the [configure features wizard](../reference/configure-features-after-upgrade.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json) on each project. Alternatively you can run the follow witadmin command: 
+This error is typical for old process templates that have not been updated in some time. Try running the [configure features wizard](/previous-versions/azure/devops/reference/upgrade/configure-features-after-upgrade?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json) on each project. Alternatively you can run the follow witadmin command: 
 
 ```cmdline
 witadmin changefield /collection:http://AdventureWorksServer:8080/tfs/DefaultCollection /n:fieldname /name:newname
 ```
 #### TF402571: Required element BugWorkItems is missing from Process Configuration.
 
-This error typically occurs when a process has not been updated in a while. Try running the [configure features wizard](../reference/configure-features-after-upgrade.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json) on each project to resolve.
+This error typically occurs when a process has not been updated in a while. Try running the [configure features wizard](/previous-versions/azure/devops/reference/upgrade/configure-features-after-upgrade?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json) on each project to resolve.
 
 #### TF402564: You've defined XX global lists. Only 64 are allowed.
 
@@ -162,7 +160,7 @@ By default, Azure DevOps Services will support 64 global lists. You will typical
 
 * [witadmin](../reference/witadmin/witadmin-customize-and-manage-objects-for-tracking-work.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json)
 * [Differences between Azure DevOps Services and Azure DevOps Server process template customizations](../organizations/settings/work/import-process/differences.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json)
-* [Configure features after Azure DevOps Server upgrade](../reference/configure-features-after-upgrade.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json)
+* [Configure features after Azure DevOps Server upgrade](/previous-versions/azure/devops/reference/upgrade/configure-features-after-upgrade?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json)
 * [Resolve validation errors](../organizations/settings/work/import-process/resolve-errors.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json)
 * [Define global lists in Azure DevOps Server](../reference/xml/define-global-lists.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json)
 * [Process customization PowerShell scripts](https://github.com/Microsoft/process-customization-scripts)

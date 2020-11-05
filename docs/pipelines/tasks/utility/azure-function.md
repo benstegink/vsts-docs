@@ -2,10 +2,7 @@
 title: Invoke Azure Function task 
 description: Invoke a HTTP triggered function in an Azure function app and parse the response in Azure Pipelines and TFS
 ms.assetid: 8D3F3DAA-92C8-4631-96C6-938D43C60008
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: reference
-ms.manager: mijacobs
 ms.custom: seodec18
 ms.author: ronai
 author: RoopeshNair
@@ -15,13 +12,13 @@ monikerRange: '>= tfs-2017'
 
 # Invoke Azure Function task
 
-[!INCLUDE [version-tfs-2017-rtm](../../_shared/version-tfs-2017-rtm.md)]
+[!INCLUDE [version-tfs-2017-rtm](../../includes/version-tfs-2017-rtm.md)]
 
-Use this task in a build or release pipeline to invoke a HTTP triggered function in an Azure function app and parse the response.
+Use this task in an [agentless job](../../process/phases.md#server-jobs) of a release pipeline to invoke an HTTP triggered function in an Azure function app and parse the response.
 
 ::: moniker range="<= tfs-2018"
 
-[!INCLUDE [temp](../../_shared/concept-rename-note.md)]
+[!INCLUDE [temp](../../includes/concept-rename-note.md)]
 
 ::: moniker-end
 
@@ -33,7 +30,7 @@ Can be used in only an [agentless job](../../process/phases.md#server-jobs) of a
 
 ## YAML snippet
 
-[!INCLUDE [temp](../_shared/yaml/AzureFunctionV1.md)]
+[!INCLUDE [temp](../includes/yaml/AzureFunctionV1.md)]
 
 ::: moniker-end
 
@@ -51,7 +48,7 @@ Can be used in only an [agentless job](../../process/phases.md#server-jobs) of a
 | **Success criteria** | Optional. How to parse the response body for success. |
 | **Control options** | See [Control options](../../process/tasks.md#controloptions) |
 
-Succeeds if the function returns success and the response body parsing is successful, or when the function updates the timeline record with success.
+Succeeds if the function returns success and the response body parsing is successful, or when the function updates the timeline record with success. 
 
 For more information about using this task, see [Approvals and gates overview](../../release/approvals/index.md).
 
@@ -60,7 +57,7 @@ For more information about using this task, see [Approvals and gates overview](.
 This task is open source on [GitHub](https://github.com/microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureFunctionV1). Feedback and contributions are welcome.
 
 
-## Q&A
+## FAQ
 
 ### Where should a task signal completion when **Callback** is chosen as the completion event?
 
@@ -73,4 +70,8 @@ To signal completion, the Azure function should POST completion data to the foll
 { "name": "TaskCompleted", "taskId": "taskInstanceId", "jobId": "jobId", "result": "succeeded" }
 ```
 See [this simple cmdline application](https://github.com/Microsoft/azure-pipelines-extensions/tree/master/ServerTaskHelper/HttpRequestSampleWithoutHandler) for specifics. 
-In addition, a C# helper library is available to enable live logging and managing task status for agentless tasks. [Learn more](https://blogs.msdn.microsoft.com/aseemb/2017/12/18/async-http-agentless-task/) 
+In addition, a C# helper library is available to enable live logging and managing task status for agentless tasks. [Learn more](/archive/blogs/aseemb/async-http-agentless-task) 
+
+### Why does the task failed within 1 minute when the timeout is longer?
+
+In case the Azure Function executes for more than 1 minute, then you'll need to use the **Callback** completion event. API Response completion option is supported for requests that complete within 60 seconds.

@@ -6,7 +6,6 @@ summary: Share information, create public projects, integrate with other service
 metadata:
   title: Collaborate documentation
   description: Share information, create public projects, integrate with other services, and collaborate with team members and stakeholders in Azure DevOps.
-  ms.service: visual-studio-online
   ms.prod: devops 
   ms.technology: devops-collab
   ms.topic: landing-page 
@@ -69,9 +68,9 @@ landingContent:
       - linkListType: quickstart
         links:
           - text: Set personal notifications
-            url: ../notifications/howto-manage-personal-notifications.md
+            url: ../notifications/manage-your-personal-notifications.md
           - text: Set team notifications
-            url: ../notifications/howto-manage-team-notifications.md
+            url: ../notifications/manage-team-group-global-organization-notifications.md
   - title: Request and provide feedback
     linkLists:
       - linkListType: overview
@@ -118,5 +117,3 @@ landingContent:
             url: ./search/work-item-search.md
           - text: Search wiki
             url: ./wiki/search-wiki.md
-
-

@@ -3,11 +3,7 @@ title: Save your changes with Git commits
 titleSuffix: Azure Repos
 description: Use Git commit to save your work into Git version control with Visual Studio or the command line.
 ms.assetid: 223c0064-06ec-433e-8ec2-d73a5435cf23
-ms.prod: devops
 ms.technology: devops-code-git 
-ms.manager: mijacobs
-ms.author: sdanie
-author: apawast
 ms.topic: tutorial
 ms.date: 11/12/2018
 monikerRange: '>= tfs-2013'
@@ -15,7 +11,7 @@ monikerRange: '>= tfs-2013'
 
 # Save work with commits
 
-#### Azure Repos | Azure DevOps Server 2019 | TFS 2018 | TFS 2017 | TFS 2015 | VS 2017 | VS 2015 Update 2
+**Azure Repos | Azure DevOps Server 2020 | Azure DevOps Server 2019 | TFS 2018 | TFS 2017 | TFS 2015 | VS 2017 | VS 2015 Update 2**
 
 Git does not automatically snapshot your code as you make edits to files in your repo.  You must tell Git exactly which changes you want to add to the next snapshot by staging those changes.
 After staging your changes, create a commit to save the snapshot to your repo. 
@@ -37,7 +33,7 @@ Git tracks file changes in your repo as you work, and separates the files in you
 - Modified files - These files have changes since your last commit, but you haven't yet staged for the next commit.
 - Staged files - These files have changes that will be added to the next commit.   
 
-![Lifecycle of files in your repo between the three states](_img/git_file_status_lifecycle.png)   
+![Lifecycle of files in your repo between the three states](media/git_file_status_lifecycle.png)   
 
 When you create a commit, only the staged changes and unchanged files are used for the snapshot. 
 Changes to unstaged but modified files are kept, but the commit uses the unmodified version from the previous commit in its snapshot.
@@ -80,7 +76,7 @@ Visual Studio keeps track of file changes to your project as you do your work. W
 Stage individual file changes by right-clicking a file in the **Change** view and selecting **Stage**. 
 Staging a change creates a **Staged Changes** section in Team Explorer. Only changes in the **Staged Changes** section are added to the next commit. 
 
-![Stage files for your next commit using Team Explorer](_img/vs-stage-files.gif)
+![Stage files for your next commit using Team Explorer](media/vs-stage-files.gif)
 
 > [!NOTE]
 > The Team Explorer **Changes** view had **Included Files** and **Excluded Files** sections before Visual Studio 2015 Update 2. The **Changes** view was updated in Visual Studio 2015 Update 2 for better
@@ -119,11 +115,11 @@ Open the **Changes** view in Team Explorer.
 
 Enter a commit message describing your changes and select **Commit Staged** to create a new commit that includes the changes listed in the **Staged Changes** section.
 
-![Create a commit from staged items in Visual Studio](_img/vscommit.gif) 
+![Create a commit from staged items in Visual Studio](media/vscommit.gif) 
 
 Skip staging files if you just want to commit all changes listed by entering a commit message and selecting **Commit All** when you have no staged changes.
 
-![Commit all changes without staging them first in Visual Studio](_img/vscommitall.gif)
+![Commit all changes without staging them first in Visual Studio](media/vscommitall.gif)
 
 When you commit in Visual Studio you can [push](pushing.md) the commit and [sync](pulling.md) the branch with a remote repository. 
 These options are available in the drop-down on the **Commit** button.   
@@ -153,7 +149,7 @@ Amend your last commit to correct small errors without making a new commit.
 1. Open the **Changes** view in Team Explorer and stage your updated changes. You can amend just the commit message by leaving the staged changes empty.
 2. Enter the updated commit message and select **Amend Previous Commit** from the **Actions** drop-down.   
 
-    ![Amend a commit in Visual Studio](_img/vs_amend_commit.png)
+    ![Amend a commit in Visual Studio](media/vs_amend_commit.png)
 
 #### [Command Line](#tab/command-line/)
 1. Stage your changes using `git add` just as you would if you were creating a new commit.

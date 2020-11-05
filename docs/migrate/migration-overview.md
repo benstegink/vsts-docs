@@ -1,29 +1,27 @@
 ---
-title: Migration overview from Azure DevOps Server to Azure DevOps Services | Azure DevOps 
-description: Overview of the high fidelity migration process from Azure DevOps Server to Azure DevOps Services
-ms.prod: devops
+title: Azure DevOps Server to Services Migration overview
+description: Overview of the high fidelity migration process from Server to Services
 ms.topic: conceptual
 ms.technology: devops-migrate
 ms.contentid: 3d6edd06-ceed-43b4-9e77-4a121864594c
-ms.manager: mijacobs
 ms.author: kaelli
 author: KathrynEE
 monikerRange: '>= tfs-2013'
-ms.date: 04/13/2018
+ms.date: 10/06/2020
 ---
 
-# Migrate data from Azure DevOps Server to Azure DevOps Services 
+# Migrate data from Azure DevOps Server to Azure DevOps Services  
 
-[!INCLUDE [version-azure-devops](_shared/version-azure-devops.md)]
+[!INCLUDE [version-azure-devops](includes/version-azure-devops.md)]
 
 > [!NOTE]
 > [Visual Studio Team Services (VSTS) is now Azure DevOps Services.](../user-guide/what-is-azure-devops.md#vsts)
->
-> On Tuesday, September 3rd support for Azure DevOps Server 2019 RTW imports will be deprecated. If you're planning to import from that version, please complete your import before September 3rd or upgrade to Azure DevOps Server 2019.0.1 
+
+
 
 ## Data migration tool for Azure DevOps
 
-The data migration tool for Azure DevOps provides a high fidelity way to migrate collection databases from Azure DevOps Server to Azure DevOps Services. It's recommended that you download the [migration guide](https://aka.ms/AzureDevOpsImport) if you're looking to use this service to import your collection(s). The guide serves as a walk through of the different steps involved in an import. Providing best practices, checklists, and helpful tips to make your import as easy as possible. The guide should be used in conjunction with the more technical documentation referenced below to successfully import to Azure DevOps Services. 
+The data migration tool for Azure DevOps provides a high fidelity way to migrate collection databases from Azure DevOps Server to Azure DevOps Services. It's recommended that you download the [migration guide and tool](https://aka.ms/AzureDevOpsImport) if you're looking to use this service to import your collection(s). The guide serves as a walk through of the different steps involved in an import. Providing best practices, checklists, and helpful tips to make your import as easy as possible. The guide should be used in conjunction with the more technical documentation referenced below to successfully import to Azure DevOps Services. 
 
 
 ## Supported Azure DevOps Server versions for import
@@ -33,13 +31,16 @@ The data migration tool for Azure DevOps provides a high fidelity way to migrate
 
 The data migration tool for Azure DevOps supports the two latest releases of Azure DevOps Server at a given time. Releases include updates and major releases. Currently the following versions of Azure DevOps Server are supported for import:
 
-* Azure DevOps Server 2019.0.1
-* Azure DevOps Server 2019 Update 1
+* Azure DevOps Server 2020
+* Azure DevOps Server 2019.1.1
 
 > [!NOTE]
 > The data migration tool doesn't support imports from Azure DevOps Server release candidates (RC). If you're planning on importing your collection database to Azure DevOps Services using this service, it's important that you don't upgrade your production database to an RC release. If you do upgrade, then you will need to wait and upgrade to the release to web (RTW) version when it's available or restore a backup copy of your database from a previous Azure DevOps Server version to import. 
 
 Normal release cadence for new Azure DevOps Server versions is once every three-to-four months. Meaning that support for a given version of Azure DevOps Server for migration to Azure DevOps Services should last for anywhere between six-to-eight months. It's important to ensure that your planning accounts for this support window to avoid having to suddenly upgrade to migrate. 
+
+
+<!--- 
 
 ## Preview features
 
@@ -51,22 +52,24 @@ Normal release cadence for new Azure DevOps Server versions is once every three-
 
 The following features can be included with your import, but are currently in a preview state. 
 
-* [Analytics](https://docs.microsoft.com/azure/devops/report/powerbi/what-is-analytics?view=azure-devops) - Note this is only supported for Azure DevOps Server 2019 and later.
+* [Analytics](../report/powerbi/what-is-analytics.md?view=azure-devops) - Note this is only supported for Azure DevOps Server 2019 and later.
 
 When queueing an import you can elect to include preview features with your import. If you do, data related to these features will be copied into your new organization along with all your other data. Should you choose to not include these features then their data will not be copied.
 
-For a list of items not included with an import please see the [migration guide](https://aka.ms/AzureDevOpsImport).
+For a list of items not included with an import, see the [migration guide and tool](https://aka.ms/AzureDevOpsImport).
+
+-->
 
 ## Data migration tool for Azure DevOps resources
 
-In general you should use the [migration guide](https://aka.ms/AzureDevOpsImport) when going through an import. When it's required the guide links back to the below documentation. These articles offer deeper technical knowledge on various import topics. 
+In general you should use the [migration guide and tool](https://aka.ms/AzureDevOpsImport) when going through an import. When it's required the guide links back to the following articles. These articles offer deeper technical knowledge on various import topics. 
 
 ### Import process 
 
-* [Validating a collection for import](migration-import.md#validating-a-collection)
-* [Preparing a collection for import](migration-import.md#generating-import-files)
-* [Before import steps](migration-import.md#getting-ready-to-import)
-* [Run an Import](migration-import.md#run-an-import)
+* [Validate a collection for import](migration-import.md#validate-a-collection)
+* [Prepare a collection for import](migration-import.md#generate-import-files)
+* [Prepare for import](migration-import.md#prepare-import)
+* [Run an import](migration-import.md#run-an-import)
 * [Post import steps](migration-post-import.md)
 
 ### Troubleshooting 
@@ -86,11 +89,11 @@ A: No, when it comes to service updates, Hosted XML organizations are treated th
 
 ### Q: Will my organization be stuck in Hosted XML forever?
 
-A: You are using the Hosted XML process because the Inheritance process model does not contain all features yet. However, you can now [clone a hosted XML process to an Inheritance process](https://docs.microsoft.com/azure/devops/organizations/settings/work/upgrade-hosted-to-inherited).
+A: You are using the Hosted XML process because the Inheritance process model does not contain all features yet. However, you can now [clone a hosted XML process to an Inheritance process](../organizations/settings/work/upgrade-hosted-to-inherited.md).
 
 ### Q: Will migrating from Hosted XML into Inheritance process model be a manual process?
 
-A: No, the migration is automated. Simply follow the steps to [clone a hosted XML process to an Inheritance process](https://docs.microsoft.com/azure/devops/organizations/settings/work/upgrade-hosted-to-inherited).
+A: No, the migration is automated. Simply follow the steps to [clone a hosted XML process to an Inheritance process](../organizations/settings/work/upgrade-hosted-to-inherited.md).
 
 
 ### Q: What happens in Hosted XML when Microsoft makes a change to a system process?
@@ -110,6 +113,10 @@ A: Yes. For data import organizations, Azure DevOps Services supports team proje
 * [Inheritance Process Model](../organizations/settings/work/manage-process.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json)
 * [Hosted XML](../organizations/settings/work/import-process/import-process.md?toc=/azure/devops/reference/toc.json&bc=/azure/devops/reference/breadcrumb/toc.json)
 
+### Q: Will my Personal Access Tokens also migrate when I migrate from Server to Services?
+
+A: No, your tokens will not migrate and you will need to [regenerate your Personal Access Tokens](../organizations/accounts/use-personal-access-tokens-to-authenticate.md?tabs=preview-page) on Azure Dev Ops Services.
+
 ### Q: If I have feedback or additional questions is there somewhere I can reach out?
 
 A: Yes, you can contact [AzureDevOpsImport@microsoft.com](mailto:AzureDevOpsImport@microsoft.com). Please note that this alias is for general questions. If you need assistance with a failed import please contact Azure DevOps [customer support](https://aka.ms/AzureDevOpsImportSupport). 
@@ -119,6 +126,4 @@ A: Yes, you can contact [AzureDevOpsImport@microsoft.com](mailto:AzureDevOpsImpo
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK3199/player]
 
 <!-- ENDSECTION --> 
-
- 
 

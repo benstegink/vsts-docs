@@ -3,10 +3,7 @@ title: Azure Repos Git tutorial
 titleSuffix: Azure Repos
 description: Learn Git with the Azure DevOps Services/TFS Git tutorial.
 ms.assetid: 0270b0fa-461b-4079-9703-cdcf53bdf39f
-ms.prod: devops
 ms.technology: devops-code-git 
-ms.author: sdanie
-author: apawast
 ms.topic: tutorial
 ms.date: 09/10/2018
 monikerRange: '>= tfs-2013'
@@ -14,7 +11,7 @@ monikerRange: '>= tfs-2013'
 
 # Azure Repos Git tutorial
 
-#### Azure Repos | Azure DevOps Server 2019 | TFS 2018 | TFS 2017 | TFS 2015 | VS 2017 | VS 2015
+**Azure Repos | Azure DevOps Server 2020 | Azure DevOps Server 2019 | TFS 2018 | TFS 2017 | TFS 2015 | VS 2017 | VS 2015**
 
 Use version control to save your work and coordinate code changes across your team. Even if you're just a single developer, version control helps you stay organized as you fix bugs and develop new features. Version control keeps a history of your development so that you can review and even rollback to any version of your code with ease.
 
@@ -34,7 +31,7 @@ These steps are:
 
 ---
 
-![The Git feature branch workflow](_img/gitworkflow.png)
+![The Git feature branch workflow](media/gitworkflow.png)
 
 Git has a version of this workflow using terminology and commands unique to Git. Throughout this tutorial you'll learn about repositories, branches, commits, and pull requests. 
 These terms might sound familiar if you've used a version control system like Team Foundation Version Control or Subversion, but they behave differently in Git.
